@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kubeflow-on-aws
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/askulkarni2/kubeflow-with-gitops
+      revision: HEAD
+      directories:
+      - path: kubeflow-on-aws/kubeflow-components/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "kubeflow"
+      source:
+        repoURL: https://github.com/askulkarni2/kubeflow-with-gitops
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+        - CreateNamespace=true
