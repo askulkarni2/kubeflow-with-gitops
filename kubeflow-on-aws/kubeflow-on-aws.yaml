@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{path.basename}}'
     spec:
-      project: "kubeflow"
+      project: default
       source:
         repoURL: https://github.com/askulkarni2/kubeflow-with-gitops
         targetRevision: HEAD
