@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeflow-roles
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: kubeflow
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/common/kubeflow-roles/
+    repoURL: https://github.com/awslabs/kubeflow-manifests/
+    targetRevision: release-v1.6.1-aws-b1.0.0
