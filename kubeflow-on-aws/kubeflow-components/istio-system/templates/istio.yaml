@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/common/istio/
+    path: charts/common/istio-1.14
     repoURL: https://github.com/awslabs/kubeflow-manifests/
     targetRevision: release-v1.6.1-aws-b1.0.0
   syncPolicy:
