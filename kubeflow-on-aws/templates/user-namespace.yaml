@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/apps/user-namespace
+    path: charts/common/user-namespace
     repoURL: https://github.com/awslabs/kubeflow-manifests/
     targetRevision: release-v1.6.1-aws-b1.0.2
   syncPolicy:
