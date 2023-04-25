@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/common/dex
     repoURL: https://github.com/awslabs/kubeflow-manifests/
-    targetRevision: release-v1.6.1-aws-b1.0.0
+    targetRevision: release-v1.6.1-aws-b1.0.2
   syncPolicy:
     automated:
       prune: true
