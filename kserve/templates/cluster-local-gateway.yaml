@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: istio-system
-    server: https://kubernetes.default.svc
+    server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
   project: default
   source:
     path: charts/common/cluster-local-gateway
