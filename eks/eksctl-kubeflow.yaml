@@ -3,37 +3,22 @@ kind: ClusterConfig
 metadata:
   name: kubeflow-gitops
   region: us-east-1
-  version: '1.24'
+  version: "1.25"
   tags:
-    karpenter.sh/discovery: kuebflow-gitops
+    karpenter.sh/discovery: kubeflow-gitops
+
 iam:
   withOIDC: true
-karpenter:
-  version: v0.27.2
-  createServiceAccount: true
-  withSpotInterruptionQueue: true
-managedNodeGroups:
-  - name: managed-ng-1
-    minSize: 5
-    maxSize: 10
-    desiredCapacity: 5
-    instanceType: m5.xlarge
-    iam:
-      withAddonPolicies:
-        imageBuilder: true
-        autoScaler: true
-        externalDNS: true
-        certManager: true
-        ebs: true
-        fsx: true
-        efs: true
-        awsLoadBalancerController: true
+
 addons:
 - name: vpc-cni
-  attachPolicyARNs:
-    - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-- name: coredns
-- name: kube-proxy
 - name: aws-ebs-csi-driver
-  wellKnownPolicies:
-    ebsCSIController: true
+- name: coredns
+
+managedNodeGroups:
+- instanceType: m5.xlarge
+  amiFamily: AmazonLinux2
+  name: kubeflow-gitops-ng
+  desiredCapacity: 5
+  minSize: 5
+  maxSize: 10
