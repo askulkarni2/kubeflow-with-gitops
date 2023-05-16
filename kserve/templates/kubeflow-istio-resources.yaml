@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: kubeflow
-    server: {{ .Values.spec.destination.server }}
+    name: {{ .Values.spec.destination.name }}
   project: default
   source:
     path: charts/common/kubeflow-istio-resources
@@ -24,5 +24,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
-    retry:
-      limit: 5

@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: cert-manager
-    server: {{ .Values.spec.destination.server }}
+    name: {{ .Values.spec.destination.name }}
   project: default
   source:
     chart: cert-manager
@@ -29,5 +29,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
-    retry:
-      limit: 5
