@@ -10,12 +10,12 @@ metadata:
 spec:
   destination:
     namespace: kubeflow
-    server: {{ .Values.destinationServer | default "https://kubernetes.default.svc" }}
+    server: {{ .Values.spec.destination.server }}
   project: default
   source:
     path: charts/apps/models-web-app
-    repoURL: https://github.com/awslabs/kubeflow-manifests/
-    targetRevision: release-v1.7.0-aws-b1.0.1
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
   syncPolicy:
     automated:
       prune: true
@@ -24,3 +24,5 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5

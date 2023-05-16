@@ -1,1 +1,6 @@
-destinationServer: ""
+spec:
+  destination:
+    name: in-cluster
+  source:
+    repoURL: https://github.com/awslabs/kubeflow-manifests/
+    targetRevision: release-v1.7.0-aws-b1.0.1
